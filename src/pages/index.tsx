@@ -21,19 +21,46 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main>
-				<input
-					type="text"
-					placeholder="name"
-					value={user.name}
-					onChange={(e) => setUser({ name: e.target.value })}
-				/>
-				<input
-					type="text"
-					placeholder="room"
-					value={room}
-					onChange={(e) => setRoom(e.target.value)}
-				/>
+			<main className="min-h-screen py-16  flex flex-col justify-center items-center">
+				<div className="max-w-xs mx-auto space-y-4 w-full">
+					<div>
+						<label
+							htmlFor="username"
+							className="block text-xs font-medium text-gray-700"
+						>
+							Username
+						</label>
+
+						<input
+							type="text"
+							value={user.name}
+							onChange={(e) =>
+								setUser({ ...user, name: e.target.value })
+							}
+							id="username"
+							className="mt-1 w-full rounded-xl border-gray-200 h-10 shadow-sm sm:text-sm"
+						/>
+					</div>
+					<div>
+						<label
+							htmlFor="room"
+							className="block text-xs font-medium text-gray-700"
+						>
+							Room
+						</label>
+
+						<input
+							type="text"
+							value={room}
+							onChange={(e) => setRoom(e.target.value)}
+							id="room"
+							className="mt-1 w-full rounded-xl border-gray-200 h-10 shadow-sm sm:text-sm"
+						/>
+					</div>
+					<button className="text-white bg-blue-600 w-full h-10 text-sm rounded-xl hover:bg-blue-700 transition-colors duration-300 ease-in-out">
+						Join
+					</button>
+				</div>
 			</main>
 		</>
 	);
