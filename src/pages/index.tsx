@@ -1,8 +1,12 @@
 import { roomAtom, userAtom } from "@/globalStates";
 import { useAtom } from "jotai";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Home() {
+	//router
+	const router = useRouter();
+
 	//update user and room
 	const [user, setUser] = useAtom(userAtom);
 	const [room, setRoom] = useAtom(roomAtom);
@@ -57,7 +61,13 @@ export default function Home() {
 							className="mt-1 w-full rounded-xl border-gray-200 h-10 shadow-sm sm:text-sm"
 						/>
 					</div>
-					<button className="text-white bg-blue-600 w-full h-10 text-sm rounded-xl hover:bg-blue-700 transition-colors duration-300 ease-in-out">
+					<button
+						onClick={() => {
+							if (!user.name || !room) return;
+							router.push(`/${room}`);
+						}}
+						className="text-white bg-blue-600 h-10 text-sm rounded-xl w-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
+					>
 						Join
 					</button>
 				</div>
