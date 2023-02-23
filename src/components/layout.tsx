@@ -1,4 +1,6 @@
+import { inter } from "@/utils/fonts";
 import Header from "./header";
+import { Provider } from "jotai";
 
 type LayoutProps = {
 	children: React.ReactNode;
@@ -6,10 +8,12 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
 	return (
-		<div>
-			<Header />
-			{children}
-		</div>
+		<Provider>
+			<div className={inter.className}>
+				<Header />
+				{children}
+			</div>
+		</Provider>
 	);
 };
 
