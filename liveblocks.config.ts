@@ -8,7 +8,7 @@ const client = createClient({
 
 // Define user presence
 type Presence = {
-	message?: string;
+	name: string;
 };
 
 // Pass client and Presence to createRoomContext & create React utilities

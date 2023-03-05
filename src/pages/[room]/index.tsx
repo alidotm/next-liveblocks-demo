@@ -1,3 +1,6 @@
+import RoomComponent from "@/components/room";
+import { userAtom } from "@/globalStates";
+import { useAtom } from "jotai";
 import { RoomProvider } from "liveblocks.config";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -9,11 +12,12 @@ const Room: NextPage = () => {
 	//room query
 	const { room } = router.query;
 
+	const [user, setUser] = useAtom(userAtom);
+
 	return (
-		<RoomProvider initialPresence={{}} id={room as string}>
-			<main className="min-h-screen py-16  flex flex-col justify-center items-center">
-				<div>Room</div>
-				<div>{room}</div>
+		<RoomProvider initialPresence={{ name: user.name }} id={room as string}>
+			<main className="min-h-screen py-24  flex flex-col container max-w-2xl mx-auto px-6">
+				<RoomComponent room={room as string} />
 			</main>
 		</RoomProvider>
 	);

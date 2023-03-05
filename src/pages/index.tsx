@@ -36,7 +36,7 @@ export default function Home() {
 								htmlFor="name"
 								className="block text-xs font-medium text-gray-900"
 							>
-								Name
+								Username
 							</label>
 							<input
 								type="text"
